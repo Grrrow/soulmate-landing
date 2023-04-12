@@ -1,8 +1,8 @@
 <template>
     <header class="bg-gray-800 sticky top-0 z-10">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-        <div>
-            <h1>Solvmate</h1>
+        <div class="w-16">
+            <img class="w-full h-auto" src="/logo-color.svg" alt="">
         </div>
         <nav>
             <ul class="hidden md:flex items-center space-x-4">
