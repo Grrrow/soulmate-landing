@@ -11,6 +11,11 @@
 </style>
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  head() {
+    return {
+      title: 'Solvmate',
+    }
+  }
 }
 </script>
