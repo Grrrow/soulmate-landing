@@ -2,6 +2,10 @@
   <div>
     <Header />
     <Hero />
+    <Form />
+    <Mission />
+    <Technology />
+    <Contact />
   </div>
 </template>
 <style>
@@ -10,7 +14,9 @@
   }
 </style>
 <script>
+import Contact from '../components/Contact.vue'
 export default {
+  components: { Contact },
   name: 'IndexPage'
 }
 </script>
