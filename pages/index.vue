@@ -1,11 +1,12 @@
 <template>
-  <div class="scroll-container">
+  <div class="scroll-container" @scroll="this.toggleScrollSnap">
     <Header />
     <Hero />
     <Form />
     <Mission />
     <Technology />
     <Contact />
+    <Footer />
   </div>
 </template>
 <style>
@@ -26,6 +27,20 @@
 </style>
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  methods: {
+    toggleScrollSnap: function(event) {
+      console.log(event)
+      const scrollContainer = document.querySelector(".scroll-container");
+      const contactSection = document.querySelector("#contact");
+      const distanceFromTop = contactSection.getBoundingClientRect().top;
+      console.log({distanceFromTop})
+      if (distanceFromTop < 0) {
+        scrollContainer.style.scrollSnapType = "none";
+      } else {
+        scrollContainer.style.scrollSnapType = "y mandatory";
+      }
+    }
+  }
 }
 </script>

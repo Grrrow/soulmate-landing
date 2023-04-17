@@ -1,7 +1,12 @@
 <template>
-  <section class="pt-32 px-4 h-screen" id="form">
-    <form class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
-      <h1 class="text-2xl font-semibold mb-4">Sign up for SolvMate</h1>
+  <section
+    class="flex items-center justify-center pt-32 px-4 h-screen"
+    id="form"
+  >
+    <form class="max-w-md bg-white p-6 rounded-md shadow-xl">
+      <h1 class="text-xl font-semibold mb-8 uppercase text-center">
+        Get notified when we launch our Beta version
+      </h1>
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label for="first-name" class="block text-gray-700 font-medium mb-1"
@@ -11,7 +16,7 @@
             id="first-name"
             type="text"
             v-model="firstName"
-            class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+            class="w-full border-b border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4"
             required
           />
         </div>
@@ -23,7 +28,7 @@
             id="last-name"
             type="text"
             v-model="lastName"
-            class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+            class="w-full border-b border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4"
             required
           />
         </div>
@@ -36,7 +41,7 @@
           id="email"
           type="email"
           v-model="email"
-          class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+          class="w-full border-b border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4"
           required
         />
       </div>
@@ -47,7 +52,7 @@
         <select
           id="location"
           v-model="location"
-          class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
           required
         >
           <option value="" disabled>Select a country</option>
@@ -60,43 +65,41 @@
           class="block text-gray-700 font-medium mb-1"
           >Preferred Language<span class="text-red-500">*</span></label
         >
-        <input
+        <select
           id="preferred-language"
-          type="text"
           v-model="preferredLanguage"
-          class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
           required
-        />
+        >
+          <option value="" disabled>Select one or more languages</option>
+          <!-- Add your languages options here -->
+        </select>
       </div>
-      <div class="grid grid-cols-2 gap-4 mt-4">
-        <div>
-          <label for="fluent-in" class="block text-gray-700 font-medium mb-1"
-            >Fluent In</label
-          >
-          <select
-            id="fluent-in"
-            v-model="fluentIn"
-            class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
-          >
-            <option value="">Select a language</option>
-            <!-- Add your language options here -->
-          </select>
-        </div>
-        <div>
-          <label
-            for="interested-in"
-            class="block text-gray-700 font-medium mb-1"
-            >Interested In Learning</label
-          >
-          <select
-            id="interested-in"
-            v-model="interestedIn"
-            class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
-          >
-            <option value="">Select a language</option>
-            <!-- Add your language options here -->
-          </select>
-        </div>
+      <div class="mt-4">
+        <label for="fluent-in" class="block text-gray-700 font-medium mb-1"
+          >Fluent In</label
+        >
+        <select
+          id="fluent-in"
+          v-model="fluentIn"
+          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4 rounded-md"
+        >
+          <option value="">Select one or more languages</option>
+          <!-- Add your language options here -->
+        </select>
+      </div>
+      <div class="mt-4">
+        <label for="interested-in" class="block text-gray-700 font-medium mb-1"
+          >Interested In Learning</label
+        >
+        <select
+          id="interested-in"
+          v-model="interestedIn"
+          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4 rounded-md"
+        >
+          <option value="">Select one or more languages</option>
+          <!-- Add your language options here -->
+        </select>
       </div>
       <div class="mt-4">
         <label for="reason" class="block text-gray-700 font-medium mb-1"
@@ -105,20 +108,20 @@
         <textarea
           id="reason"
           v-model="reason"
-          class="w-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
+          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
           rows="3"
         ></textarea>
       </div>
       <div class="mt-4">
-        <p for="agree" class="text-gray-700">Read our
-          <a href="#" class="text-blue-500">privacy policy</a> and
+        <p for="agree" class="text-gray-700">
+          Read our <a href="#" class="text-blue-500">privacy policy</a> and
           <a href="#" class="text-blue-500">terms</a>
           related to any information you may share with us. Thank you.
         </p>
       </div>
       <button
         type="submit"
-        class="notify-btn font-bold w-full text-white py-2 px-4 mt-6 rounded-md transition duration-300"
+        class="notify-btn font-bold w-full text-white py-2 px-4 mt-6 rounded-md transition duration-300 uppercase tracking-wide"
       >
         Notify me
       </button>
@@ -143,6 +146,9 @@ export default {
 };
 </script>
 <style scoped>
+#form {
+  background-color: #d1e6e2;
+}
 .notify-btn {
   background-color: #f9a858;
 }

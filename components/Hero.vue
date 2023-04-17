@@ -11,7 +11,7 @@
           If you are into learning and practicing new languages, you are going to love SolvMate!
         </p>
 
-         <a @click="this.scrollToForm" href="#form" class="join-btn mt-8 text-white font-bold py-2 px-4 rounded-full inline-block">
+         <a @click="this.scrollToForm" href="#form" class="join-btn mt-8 text-white font-bold py-2 px-4 rounded-full inline-block uppercase tracking-wider">
           Join the waitlist
         </a>
       </div>
