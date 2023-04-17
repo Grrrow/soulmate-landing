@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 px-4 h-screen" id="form">
+  <section class="pt-32 px-4 h-screen" id="form">
     <form class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
       <h1 class="text-2xl font-semibold mb-4">Sign up for SolvMate</h1>
       <div class="grid grid-cols-2 gap-4">
@@ -118,12 +118,12 @@
       </div>
       <button
         type="submit"
-        class="bg-blue-500 text-white py-2 px-4 mt-6 rounded-md hover:bg-blue-600 transition duration-300"
+        class="notify-btn font-bold w-full text-white py-2 px-4 mt-6 rounded-md transition duration-300"
       >
         Notify me
       </button>
     </form>
-  </div>
+  </section>
 </template>
 <script>
 export default {
@@ -143,5 +143,11 @@ export default {
 };
 </script>
 <style scoped>
-/* Add any additional custom styles or overrides here */
+.notify-btn {
+  background-color: #f9a858;
+}
+
+.notify-btn:hover {
+  background-color: #f59434;
+}
 </style>

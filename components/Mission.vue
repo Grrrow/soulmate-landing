@@ -1,5 +1,5 @@
 <template>
-  <section class="mission bg-gray-100 py-16 h-screen">
+  <section class="mission bg-gray-100 pt-32 px-4 h-screen" id="mission">
     <div class="container mx-auto px-4">
       <div class="content text-center">
         <h2 class="text-3xl font-bold mb-8">Our Mission</h2>
