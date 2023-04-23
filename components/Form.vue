@@ -129,6 +129,8 @@
   </section>
 </template>
 <script>
+import db from '~/plugins/firebase';
+
 export default {
   data() {
     return {
@@ -142,6 +144,36 @@ export default {
       reason: "",
       agree: false,
     };
+  },
+  methods: {
+    async submitForm(event) {
+      event.preventDefault();
+
+      await db.collection("waitlist").add({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        location: this.location,
+        preferredLanguage: this.preferredLanguage,
+        fluentIn: this.fluentIn,
+        interestedIn: this.interestedIn,
+        reason: this.reason,
+        agree: this.agree,
+      });
+
+      this.resetForm();
+    },
+    resetForm() {
+      this.firstName = "";
+      this.lastName = "";
+      this.email = "";
+      this.location = "";
+      this.preferredLanguage = "";
+      this.fluentIn = "";
+      this.interestedIn = "";
+      this.reason = "";
+      this.agree = false;
+    },
   },
 };
 </script>

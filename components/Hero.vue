@@ -43,7 +43,6 @@ export default {
   name: 'Hero',
   methods: {
     scrollToForm: function(event) {
-      console.log('scrolling to form', event)
       event.preventDefault()
       const formSection = document.querySelector('#form')
       formSection.scrollIntoView({ behavior: 'smooth' })

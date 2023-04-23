@@ -30,11 +30,9 @@ export default {
   name: 'IndexPage',
   methods: {
     toggleScrollSnap: function(event) {
-      console.log(event)
       const scrollContainer = document.querySelector(".scroll-container");
       const contactSection = document.querySelector("#contact");
       const distanceFromTop = contactSection.getBoundingClientRect().top;
-      console.log({distanceFromTop})
       if (distanceFromTop < 0) {
         scrollContainer.style.scrollSnapType = "none";
       } else {
