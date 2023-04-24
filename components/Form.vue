@@ -3,7 +3,7 @@
     class="flex items-center justify-center pt-32 px-4 h-screen"
     id="form"
   >
-    <form class="max-w-md bg-white p-6 rounded-md shadow-xl">
+    <form class="max-w-md bg-white p-6 rounded-md shadow-xl" @submit="this.submitForm">
       <h1 class="text-xl font-semibold mb-8 uppercase text-center">
         Get notified when we launch our Beta version
       </h1>
@@ -129,8 +129,6 @@
   </section>
 </template>
 <script>
-import db from '~/plugins/firebase';
-
 export default {
   data() {
     return {
@@ -149,7 +147,7 @@ export default {
     async submitForm(event) {
       event.preventDefault();
 
-      await db.collection("waitlist").add({
+      await this.$fire.firestore.collection("waitlist").add({
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
