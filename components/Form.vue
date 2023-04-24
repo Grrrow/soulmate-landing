@@ -72,7 +72,7 @@
           required
         >
           <option value="" disabled>Select one or more languages</option>
-          <!-- Add your languages options here -->
+          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
         </select>
       </div>
       <div class="mt-4">
@@ -85,7 +85,7 @@
           class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4 rounded-md"
         >
           <option value="">Select one or more languages</option>
-          <!-- Add your language options here -->
+          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
         </select>
       </div>
       <div class="mt-4">
@@ -98,7 +98,7 @@
           class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4 rounded-md"
         >
           <option value="">Select one or more languages</option>
-          <!-- Add your language options here -->
+          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
         </select>
       </div>
       <div class="mt-4">
@@ -141,7 +141,14 @@ export default {
       interestedIn: "",
       reason: "",
       agree: false,
+      languages: [],
     };
+  },
+  mounted: async function() {
+    const querySnapshot = await this.$fire.firestore.collection("languages").get();
+    querySnapshot.forEach(doc => {
+      this.languages.push(doc.data());
+    })
   },
   methods: {
     async submitForm(event) {
