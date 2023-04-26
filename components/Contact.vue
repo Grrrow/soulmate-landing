@@ -1,10 +1,10 @@
 <template>
-  <section class="contact bg-gray-100 pt-32 px-4 h-screen" id="contact">
+  <section class="contact bg-gray-100 px-4 h-screen flex items-center justify-center" id="contact">
     <div class="container mx-auto px-4">
       <div class="content">
-        <h2 class="text-3xl font-bold mb-16 md:mb-48 text-center">Contact Us</h2>
-        <p class="text-lg text-gray-800 mb-8">We value:</p>
-        <ul class="list-disc list-inside text-lg text-gray-800 mb-8">
+        <h2 class="text-4xl font-bold mb-16 md:mb-48 text-center">Contact Us</h2>
+        <p class="text-xl text-gray-800 mb-8">We value:</p>
+        <ul class="list-disc list-inside text-xl text-gray-800 mb-8">
           <li>
             <span class="font-bold">Growth mindset</span> - we encourage
             ourselves and others to get outside of our comfort zone.
@@ -28,13 +28,13 @@
             humble and know we can learn something from everyone.
           </li>
         </ul>
-        <p class="text-lg text-gray-800 mb-8">
+        <p class="text-xl text-gray-800 mb-8">
           We’re built on the foundation of our values and we are looking for
           like-minded optimists who want to be part of our journey. If this
           resonates with you, we would love to hear from you. You can reach us
           at:
         </p>
-        <p class="text-lg text-gray-800">
+        <p class="text-xl text-gray-800 font-bold">
           <a
             href="mailto:info@solvmate.co"
             class="text-blue-500 hover:underline"

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex items-center justify-center px-4 py-16"
+    class="flex items-center justify-center px-4 py-16 bg-gray-100"
     id="form"
   >
     <form
@@ -272,9 +272,6 @@ export default {
 </script>
 <style>
 @import url("vue-multiselect/dist/vue-multiselect.min.css");
-#form {
-  background-color: #d1e6e2;
-}
 
 .location-select-error .multiselect__tags,
 .preferred-lang-select-error .multiselect__tags {

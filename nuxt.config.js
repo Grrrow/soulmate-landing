@@ -24,7 +24,7 @@ export default {
       { rel: "preconnect", type: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com" },
       {
-        href: "https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Heebo:wght@100&family=Mukta+Vaani:wght@300;600&display=swap",
         rel: "stylesheet",
       },
     ],
