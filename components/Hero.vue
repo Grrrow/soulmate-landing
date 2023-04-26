@@ -1,37 +1,45 @@
 <template>
-  <section class="hero">
-    <div class="container mx-auto px-4">
-      <div class="content">
-        <h1 class="text-white text-4xl font-bold mb-8">Using AI to connect you with others, regardless of language.</h1>
-        <h2>Where language is no longer a barrier to connection, our AI-powered matchmaking and communication platform allows you to effortlessly connect with others from all over the world, breaking down language obstacles and making true communication possible.</h2>
-        <a href="mailto:info@solvmate.co" target="_blank" class="bg-blue-500 mt-8 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full inline-block">
-          Join the waitlist >
-        </a>
+  <section class="hero bg-white h-screen flex items-center justify-center md:justify-start" id="hero">
+    <div class="px-4 md:pl-32">
+      <div class="max-w-2xl text-center md:text-left">
+        <h1 class="text-4xl font-bold mb-8">SolvMate leverages AI to connect you to people around the world, in your language of choice.</h1>
+        <p class="text-xl text-black mb-8">
+          Our AI-powered platform allows you to connect to people from around the world who share common interests, breaking down language barriers.
+        </p>
+        <p class="text-xl text-black">
+          If you are into learning and practicing new languages, you are going to love SolvMate!
+        </p>
+        <div class="flex justify-center">
+          <a @click="this.scrollToForm" href="#form" class="join-btn mt-8 text-white text-xl font-bold py-2 px-4 rounded-full inline-block uppercase tracking-wider">
+            Join the waitlist
+          </a>
+        </div>
       </div>
-   
     </div>
   </section>
 </template>
 
-<style>
+<style scoped>
 .hero {
-  background-image: url('/images/hero-background.jpg');
+  background-image: url('/hero-bg.jpg');
   background-size: cover;
-  background-position: center center;
-  height: 100vh;
-  color: aliceblue;
-  background: black;
-  display: flex;
-  align-items: center;
+  background-position: right right;
+  background-repeat: no-repeat;
 }
-.content {
-  text-align: center;
+.join-btn {
+  background-color: #ffd080;
 }
 </style>
 
-
 <script>
 export default {
-  name: 'Hero'
+  name: 'Hero',
+  methods: {
+    scrollToForm: function(event) {
+      event.preventDefault()
+      const formSection = document.querySelector('#form')
+      formSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 }
 </script>
