@@ -3,7 +3,10 @@
     class="flex items-center justify-center pt-32 px-4 h-screen"
     id="form"
   >
-    <form class="max-w-md bg-white p-6 rounded-md shadow-xl" @submit="this.submitForm">
+    <form
+      class="max-w-md bg-white p-6 rounded-md shadow-xl"
+      @submit="this.submitForm"
+    >
       <h1 class="text-xl font-semibold mb-8 uppercase text-center">
         Get notified when we launch our Beta version
       </h1>
@@ -49,15 +52,13 @@
         <label for="location" class="block text-gray-700 font-medium mb-1"
           >Select Location<span class="text-red-500">*</span></label
         >
-        <select
-          id="location"
+        <multiselect
           v-model="location"
-          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
-          required
-        >
-          <option value="" disabled>Select a country</option>
-          <!-- Add your country options here -->
-        </select>
+          :options="countries"
+          label="name"
+          track-by="name"
+          placeholder="Select a country"
+        ></multiselect>
       </div>
       <div class="mt-4">
         <label
@@ -65,41 +66,40 @@
           class="block text-gray-700 font-medium mb-1"
           >Preferred Language<span class="text-red-500">*</span></label
         >
-        <select
-          id="preferred-language"
+        <multiselect
           v-model="preferredLanguage"
-          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
-          required
-        >
-          <option value="" disabled>Select one or more languages</option>
-          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
-        </select>
+          :options="languages"
+          label="name"
+          track-by="name"
+          placeholder="Select one or more languages"
+          :multiple="true"
+        ></multiselect>
       </div>
       <div class="mt-4">
         <label for="fluent-in" class="block text-gray-700 font-medium mb-1"
           >Fluent In</label
         >
-        <select
-          id="fluent-in"
+        <multiselect
           v-model="fluentIn"
-          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 py-2 px-4 rounded-md"
-        >
-          <option value="">Select one or more languages</option>
-          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
-        </select>
+          :options="languages"
+          label="name"
+          track-by="name"
+          placeholder="Select one or more languages"
+          :multiple="true"
+        ></multiselect>
       </div>
       <div class="mt-4">
         <label for="interested-in" class="block text-gray-700 font-medium mb-1"
           >Interested In Learning</label
         >
-        <select
-          id="interested-in"
+        <multiselect
           v-model="interestedIn"
-          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4 rounded-md"
-        >
-          <option value="">Select one or more languages</option>
-          <option v-for="language in languages" :value="language.code" :key="language.code">{{ language.name }}</option>
-        </select>
+          :options="languages"
+          label="name"
+          track-by="name"
+          placeholder="Select one or more languages"
+          :multiple="true"
+        ></multiselect>
       </div>
       <div class="mt-4">
         <label for="reason" class="block text-gray-700 font-medium mb-1"
@@ -129,28 +129,38 @@
   </section>
 </template>
 <script>
+import Multiselect from "vue-multiselect";
+
 export default {
+  components: { Multiselect },
   data() {
     return {
       firstName: "",
       lastName: "",
       email: "",
       location: "",
-      preferredLanguage: "",
-      fluentIn: "",
-      interestedIn: "",
+      preferredLanguage: [],
+      fluentIn: [],
+      interestedIn: [],
       reason: "",
       agree: false,
       languages: [],
+      countries: [],
     };
   },
-  mounted: async function() {
-    const querySnapshot = await this.$fire.firestore.collection("languages").get();
-    querySnapshot.forEach(doc => {
-      this.languages.push(doc.data());
-    })
+  mounted: async function () {
+    this.loadFromFirestore("countries");
+    this.loadFromFirestore("languages");
   },
   methods: {
+    async loadFromFirestore(collection) {
+      const querySnapshot = await this.$fire.firestore
+        .collection(collection)
+        .get();
+      querySnapshot.forEach((doc) => {
+        this[collection].push(doc.data());
+      });
+    },
     async submitForm(event) {
       event.preventDefault();
 
@@ -173,15 +183,16 @@ export default {
       this.lastName = "";
       this.email = "";
       this.location = "";
-      this.preferredLanguage = "";
-      this.fluentIn = "";
-      this.interestedIn = "";
+      this.preferredLanguage = [];
+      this.fluentIn = [];
+      this.interestedIn = [];
       this.reason = "";
       this.agree = false;
     },
   },
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 #form {
   background-color: #d1e6e2;
