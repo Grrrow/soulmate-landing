@@ -27,11 +27,7 @@
   background-repeat: no-repeat;
 }
 .join-btn {
-  background-color: #f9a858;
-}
-
-.join-btn:hover {
-  background-color: #f59434;
+  background-color: #ffd080;
 }
 </style>
 

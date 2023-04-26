@@ -63,19 +63,15 @@
 header {
   height: 64px;
   color: white;
-  background-color: #6c5b7b;
+  background-color: #b07d7d;
 }
 
 .nav-list {
-  background-color: #6c5b7b;
+  background-color: #b07d7d;
 }
 
 .join-btn {
-  background-color: #f9a858;
-}
-
-.join-btn:hover {
-  background-color: #f59434;
+    background-color: #ffd080;
 }
 </style>
 

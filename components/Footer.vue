@@ -13,7 +13,7 @@
 
 <style>
 footer {
-  background-color: #6c5b7b;
+  background-color: #b07d7d;
 }
 </style>
 

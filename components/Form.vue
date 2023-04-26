@@ -279,9 +279,6 @@ export default {
 }
 
 .notify-btn {
-  background-color: #f9a858;
-}
-.notify-btn:hover {
-  background-color: #f59434;
+  background-color: #ffd080;
 }
 </style>
