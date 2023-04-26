@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex items-center justify-center pt-32 px-4 h-screen"
+    class="flex items-center justify-center px-4 py-16"
     id="form"
   >
     <form
