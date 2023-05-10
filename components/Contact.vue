@@ -2,7 +2,7 @@
   <section class="contact bg-gray-100 px-4 h-screen flex items-center justify-center" id="contact">
     <div class="container mx-auto px-4">
       <div class="content">
-        <h2 class="text-4xl font-bold mb-16 md:mb-48 text-center">Contact Us</h2>
+        <h2 class="text-4xl font-bold mb-8 text-center">Contact Us</h2>
         <p class="text-xl text-gray-800 mb-8">We value:</p>
         <ul class="list-disc list-inside text-xl text-gray-800 mb-8">
           <li>
