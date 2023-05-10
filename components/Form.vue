@@ -8,7 +8,7 @@
       @submit.prevent="submitForm"
     >
       <h1 class="text-xl font-semibold mb-8 uppercase text-center">
-        Get notified when we launch our Beta version
+        Get notified when we launch the Beta version
       </h1>
       <div class="grid grid-cols-2 gap-4">
         <div>
