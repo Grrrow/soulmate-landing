@@ -182,7 +182,7 @@
       </div>
       <button
         type="submit"
-        class="notify-btn font-bold w-full text-white py-2 px-4 mt-6 rounded-md transition duration-300 uppercase tracking-wide"
+        class="notify-btn font-bold w-full text-gray-800 py-2 px-4 mt-6 rounded-md transition duration-300 uppercase tracking-wide"
       >
         Notify me
       </button>

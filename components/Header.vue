@@ -25,7 +25,7 @@
             <a
               @click="(event) => this.handleScroll(event, '#form')"
               href="#mission"
-              class="join-btn text-white font-bold py-1 px-4 rounded-full inline-block uppercase tracking-wide"
+              class="join-btn text-gray-800 font-bold py-1 px-4 rounded-full inline-block uppercase tracking-wide"
               >Join the waitlist</a
             >
           </li>
