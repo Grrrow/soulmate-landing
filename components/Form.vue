@@ -172,8 +172,8 @@
           class="h-5 w-5 text-blue-500"
         />
         <label for="agree" class="ml-2 text-gray-700">
-          Read our <a href="#" class="text-blue-500">privacy policy</a> and
-          <a href="#" class="text-blue-500">terms</a>
+          Read our <NuxtLink to="/legal/privacy-policy" class="text-blue-500">privacy policy</NuxtLink> and
+          <NuxtLink to="/legal/terms-of-use" class="text-blue-500">terms</NuxtLink>
           related to any information you may share with us. Thank you.
         </label>
         <p v-if="errors.agree" class="text-red-500 text-sm">

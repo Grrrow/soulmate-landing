@@ -2,9 +2,9 @@
   <header class="sticky top-0 z-10 bg-gray-900" id="header">
     <div class="container mx-auto px-4 h-16 flex items-center justify-between">
       <div class="w-16">
-        <a @click="(event) => this.handleScroll(event, '#hero')" href="#hero">
+        <NuxtLink to="/" @click="(event) => this.handleScroll(event, '#hero')">
           <img class="w-full h-auto" src="/logo-white.svg" alt="" />
-        </a>
+        </NuxtLink>
       </div>
       <nav>
         <button
