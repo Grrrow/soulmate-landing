@@ -340,6 +340,7 @@ export default {
         preferredLanguage: this.preferredLanguage,
         fluentIn: this.fluentIn,
         interestedIn: this.interestedIn,
+        options: this.options.filter((option) => option.checked),
         agree: this.agree,
       });
 
@@ -353,6 +354,10 @@ export default {
       this.preferredLanguage = [];
       this.fluentIn = [];
       this.interestedIn = [];
+      this.options = this.options.map((option) => {
+        option.checked = false;
+        return option;
+      });
       this.agree = false;
     },
   },
