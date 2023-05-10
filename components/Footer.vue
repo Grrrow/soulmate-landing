@@ -4,7 +4,7 @@
           <div class="w-16 mb-4">
             <img class="w-full h-auto" src="/logo-white.svg" alt="">
           </div>
-          <p class="uppercase font-bold">
+          <p class="font-bold">
             Copyright © {{ new Date().getFullYear() }} Solvmate. All rights reserved.
           </p>
         </div>
