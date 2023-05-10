@@ -124,21 +124,60 @@
         ></multiselect>
       </div>
       <div class="mt-4">
-        <label for="reason" class="block text-gray-700 font-medium mb-1"
-          >Why are you excited about using SolvMate?</label
-        >
-        <textarea
-          id="reason"
-          v-model="reason"
-          class="w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md py-2 px-4"
-          rows="3"
-        ></textarea>
+        <p class="mb-4">I'd like to use SolvMate to:</p>
+
+        <div class="space-y-2">
+          <div
+            v-for="(option, index) in options"
+            :key="index"
+            class="flex items-center"
+          >
+            <input
+              type="checkbox"
+              :id="option.id"
+              v-model="option.checked"
+              class="h-5 w-5 text-blue-500"
+            />
+            <label :for="option.id" class="ml-2 text-gray-700">{{
+              option.label
+            }}</label>
+          </div>
+
+          <div class="flex items-center">
+            <input
+              type="checkbox"
+              id="other"
+              v-model="otherChecked"
+              class="h-5 w-5 text-blue-500"
+            />
+            <label for="other" class="ml-2 text-gray-700">Other:</label>
+            <input
+              v-if="otherChecked"
+              v-model="otherText"
+              type="text"
+              class="form-input ml-2 h-10 w-full"
+              placeholder="Tell us more!"
+            />
+          </div>
+        </div>
+        <p v-if="errors.options" class="text-red-500 text-sm">
+          {{ errors.options }}
+        </p>
       </div>
       <div class="mt-4">
-        <p for="agree" class="text-gray-700">
+        <input
+          type="checkbox"
+          id="agree"
+          v-model="agree"
+          class="h-5 w-5 text-blue-500"
+        />
+        <label for="agree" class="ml-2 text-gray-700">
           Read our <a href="#" class="text-blue-500">privacy policy</a> and
           <a href="#" class="text-blue-500">terms</a>
           related to any information you may share with us. Thank you.
+        </label>
+        <p v-if="errors.agree" class="text-red-500 text-sm">
+          {{ errors.agree }}
         </p>
       </div>
       <button
@@ -164,10 +203,36 @@ export default {
       preferredLanguage: [],
       fluentIn: [],
       interestedIn: [],
-      reason: "",
       agree: false,
       languages: [],
       countries: [],
+      options: [
+        { id: "meet_online", label: "Meet new people online", checked: false },
+        {
+          id: "meet_real_world",
+          label: "Meet new people in the real world (events, festivals, etc)",
+          checked: false,
+        },
+        { id: "talk_somebody", label: "Talk with somebody", checked: false },
+        {
+          id: "discuss_interests",
+          label: "Discuss topics I am interested in with kindred spirits",
+          checked: false,
+        },
+        {
+          id: "other_languages",
+          label: "Talk to people in other languages (in my language)",
+          checked: false,
+        },
+        {
+          id: "practice_languages",
+          label: "Practice other languages with real people",
+          checked: false,
+        },
+        { id: "conduct_business", label: "Conduct business", checked: false },
+      ],
+      otherChecked: false,
+      otherText: "",
       errors: {
         firstName: "",
         lastName: "",
@@ -176,14 +241,14 @@ export default {
         preferredLanguage: "",
         fluentIn: "",
         interestedIn: "",
-        reason: "",
+        options: "",
         agree: "",
       },
     };
   },
   mounted: async function () {
-    this.loadFromFirestore("countries");
-    this.loadFromFirestore("languages");
+    // this.loadFromFirestore("countries");
+    // this.loadFromFirestore("languages");
   },
   methods: {
     async loadFromFirestore(collection) {
@@ -227,9 +292,24 @@ export default {
     },
     validatePreferredLanguage() {
       if (!this.preferredLanguage.length) {
-        this.errors.preferredLanguage = "At least one preferred language is required.";
+        this.errors.preferredLanguage =
+          "At least one preferred language is required.";
       } else {
         this.errors.preferredLanguage = "";
+      }
+    },
+    validateOptions() {
+      if (!this.options.some((option) => option.checked) && (!this.otherChecked || !this.otherText.trim().length)) {
+        this.errors.options = "At least one option is required.";
+      } else {
+        this.errors.options = "";
+      }
+    },
+    validateAgree() {
+      if (!this.agree) {
+        this.errors.agree = "You must agree to continue.";
+      } else {
+        this.errors.agree = "";
       }
     },
     async submitForm() {
@@ -238,8 +318,18 @@ export default {
       this.validateEmail();
       this.validateLocation();
       this.validatePreferredLanguage();
+      this.validateOptions();
+      this.validateAgree();
 
-      if (this.errors.firstName || this.errors.lastName || this.errors.email || this.errors.location || this.errors.preferredLanguage) {
+      if (
+        this.errors.firstName ||
+        this.errors.lastName ||
+        this.errors.email ||
+        this.errors.location ||
+        this.errors.preferredLanguage ||
+        this.errors.options ||
+        this.errors.agree
+      ) {
         return;
       }
       await this.$fire.firestore.collection("waitlist").add({
@@ -250,7 +340,6 @@ export default {
         preferredLanguage: this.preferredLanguage,
         fluentIn: this.fluentIn,
         interestedIn: this.interestedIn,
-        reason: this.reason,
         agree: this.agree,
       });
 
@@ -264,7 +353,6 @@ export default {
       this.preferredLanguage = [];
       this.fluentIn = [];
       this.interestedIn = [];
-      this.reason = "";
       this.agree = false;
     },
   },
