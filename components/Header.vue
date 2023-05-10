@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky top-0 z-10" id="header">
+  <header class="sticky top-0 z-10 bg-gray-900" id="header">
     <div class="container mx-auto px-4 h-16 flex items-center justify-between">
       <div class="w-16">
         <a @click="(event) => this.handleScroll(event, '#hero')" href="#hero">
@@ -63,11 +63,10 @@
 header {
   height: 64px;
   color: white;
-  background-color: #b07d7d;
 }
 
 .nav-list {
-  background-color: #b07d7d;
+  @apply bg-gray-900;
 }
 
 .join-btn {
