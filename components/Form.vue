@@ -247,17 +247,13 @@ export default {
     };
   },
   mounted: async function () {
-    // this.loadFromFirestore("countries");
-    // this.loadFromFirestore("languages");
+    this.countries = await this.load("countries");
+    this.languages = await this.load("languages");
   },
   methods: {
-    async loadFromFirestore(collection) {
-      const querySnapshot = await this.$fire.firestore
-        .collection(collection)
-        .get();
-      querySnapshot.forEach((doc) => {
-        this[collection].push(doc.data());
-      });
+    async load(collection) {
+      const response = await fetch(`/data/${collection}.json`);
+      return await response.json();
     },
     validateFirstName() {
       if (!this.firstName.trim()) {
