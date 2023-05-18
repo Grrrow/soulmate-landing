@@ -186,13 +186,15 @@
         Notify me
       </button>
     </form>
+    <modal :show="showModal" @close="closeModal"></modal>
   </section>
 </template>
 <script>
 import Multiselect from "vue-multiselect";
+import Modal from './Modal.vue';
 
 export default {
-  components: { Multiselect },
+  components: { Multiselect, Modal },
   data() {
     return {
       firstName: "",
@@ -243,6 +245,7 @@ export default {
         options: "",
         agree: "",
       },
+      showModal: false
     };
   },
   mounted: async function () {
@@ -338,7 +341,8 @@ export default {
         options: this.options.filter((option) => option.checked),
         agree: this.agree,
       });
-
+      
+      this.showModal = true;
       this.resetForm();
     },
     resetForm() {
@@ -355,6 +359,9 @@ export default {
       });
       this.agree = false;
     },
+    closeModal() {
+      this.showModal = false;
+    }
   },
 };
 </script>
