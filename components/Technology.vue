@@ -4,7 +4,7 @@
       <div class="content">
         <h2 class="text-4xl font-bold mb-8 text-center">Our Technology</h2>
         <p class="text-xl text-gray-800 text-center mb-8 md:mb-24">
-          SolvMate leverages AI in 3 major ways.
+          SolvMate leverages AI in 3 major ways:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div class="flex flex-col items-center">
