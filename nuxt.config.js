@@ -1,6 +1,4 @@
 require("dotenv").config();
-import Vue from 'vue'
-import VueGtag from 'vue-gtag'
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -53,7 +51,9 @@ export default {
   modules: [
     "@nuxtjs/firebase"
   ],
-
+  env: {
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
+  },
   // Firebase Configuration
   firebase: {
     config: {
