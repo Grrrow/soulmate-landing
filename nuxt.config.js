@@ -51,10 +51,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    "@nuxtjs/firebase",
-    ['@nuxtjs/google-analytics', {
-      id: process.env.GOOGLE_ANALYTICS_ID
-    }]
+    "@nuxtjs/firebase"
   ],
 
   // Firebase Configuration
