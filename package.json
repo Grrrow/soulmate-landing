@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nuxtjs/firebase": "^8.2.2",
+    "@nuxtjs/google-analytics": "^2.4.0",
     "core-js": "^3.19.3",
     "express": "^4.18.2",
     "firebase": "^9.20.0",

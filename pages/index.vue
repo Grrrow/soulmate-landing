@@ -19,6 +19,9 @@
 </style>
 <script>
 export default {
-  name: 'IndexPage'
+  name: 'IndexPage',
+  mounted: function () {
+    this.$ga.page('/')
+  }
 }
 </script>
